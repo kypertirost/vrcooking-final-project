@@ -7,11 +7,12 @@ public class TransformtoCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         pos = Camera.main.transform.localPosition;
+        transform.position = pos;
        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = pos;
+       
 	}
 }

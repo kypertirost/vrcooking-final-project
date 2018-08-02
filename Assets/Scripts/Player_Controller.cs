@@ -4,8 +4,8 @@ using UnityEngine.Networking;
     public class Player_Controller : NetworkBehaviour
     {
 
-        public Transform cameraTransform;
-        public Transform cameraContainerTransform;
+         Transform cameraTransform;
+        Transform cameraContainerTransform;
         public Transform visorTransform;
         public Vector3 direction;
 
