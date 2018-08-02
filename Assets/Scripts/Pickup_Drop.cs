@@ -26,12 +26,23 @@ namespace sj1948FinalProject{
             {
                 //if the object is clicked on, it will remain in the center of the frame of the camera aka the player's perspective
                 //relativePos is the position the object should be in in relationship to the camera
-                var relativePos = Magnitude * Camera.main.transform.forward + Camera.main.transform.position - transform.position+new Vector3(0,0,0);
+                var relativePos = Magnitude * Camera.main.transform.forward + Camera.main.transform.position - transform.position+new Vector3(0,0,-0.2f);
                 myRb.velocity = relativePos * 100;
 
             }
         }
-
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.gameObject.name=="cooker"){
+                Destroy(transform.gameObject);
+                GameObject soup = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                soup.transform.localScale = new Vector3(0.7f, 0.07f, 0.7f);
+                soup.transform.parent = collision.transform;
+                soup.name = "soup";
+                soup.GetComponent<Renderer>().material.color = new Color(0, 0, 1, 1);
+                soup.transform.localPosition = Vector3.zero;
+            }
+        }
         /*
          * PickupOrDrop
          * Handle the event when the user clicks the button while 

@@ -5,8 +5,15 @@ using UnityEngine;
 public class growing : MonoBehaviour {
 
     Vector3 temp;
-	// Use this for initialization
-	void Start () {
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name=="cube"){
+            Destroy(collision.gameObject);
+        }
+    }
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
