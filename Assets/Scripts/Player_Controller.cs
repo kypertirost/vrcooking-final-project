@@ -1,46 +1,43 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-    public class Player_Controller : NetworkBehaviour
+public class Player_Controller : NetworkBehaviour
+{
+
+    private Transform cameraTransform;
+    private Transform cameraContainerTransform;
+    public Vector3 direction;
+
+
+
+    public override void OnStartLocalPlayer()
     {
 
-        public Transform cameraTransform;
-        public Transform cameraContainerTransform;
-        public Transform visorTransform;
-        public Vector3 direction;
+        GameObject empty = new GameObject();
+        empty.name = "Camera";
+        cameraTransform = Camera.main.transform;
+        //GetComponent<Renderer>().material.color = Color.blue;
+        cameraContainerTransform = empty.transform;
+        cameraTransform.parent = cameraContainerTransform;
 
-
-
-        public override void OnStartLocalPlayer()
-        {
-            GetComponent<Renderer>().material.color = Color.blue;
-            cameraTransform = Camera.main.transform;
-            cameraContainerTransform = cameraTransform.parent;
-            
-            visorTransform = transform.Find("Visor");
-            cameraContainerTransform.position = visorTransform.position;
-            Debug.Log("start local player: visor position = " + visorTransform.position + " camera posn = " + cameraContainerTransform.position);
-        }
-
-        void Update()
-        {
-            if (!isLocalPlayer)
-            {
-                return;
-            }
-
-            // rotate the player to match the camera's rotation (controlled by GoogleVR)
-            Vector3 yrot = cameraTransform.rotation.eulerAngles;
-            // only rotate around y axis
-            yrot.x = 0;
-            yrot.z = 0;
-            transform.eulerAngles = yrot;
-            //        transform.rotation = cameraTransform.rotation;
-
-            // move the camera to match the player's position
-            cameraContainerTransform.position = visorTransform.position;
-
-        }
-
+        //visorTransform = transform.Find("Visor");
+        //cameraContainerTransform.position = visorTransform.position;
+        //Debug.Log("start local player: visor position = " + visorTransform.position + " camera posn = " + cameraContainerTransform.position);
     }
+
+    void Update()
+    {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
+        transform.rotation = cameraTransform.rotation;
+        cameraContainerTransform.position = transform.position;
+        Vector3 heightRevised = cameraContainerTransform.position;
+        heightRevised.y = -29.07f;
+        cameraContainerTransform.position = heightRevised;
+    }
+
+}
 
