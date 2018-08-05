@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+using UnityEngine.Networking;
 namespace sj1948FinalProject{
     /***
      * PickupMe component allows user to select this object and 
      * move it with their gaze
      ******/
-    public class Pickup_Drop : MonoBehaviour
+    public class Pickup_Drop : NetworkBehaviour
     {
-        public bool grabbed = false;  // have i been picked up, or not?
+        [SyncVar]public bool grabbed = false;  // have i been picked up, or not?
         Rigidbody myRb;
         float Magnitude;
-
+        private Transform soup;
         // Use this for initialization
         void Start()
         {
@@ -33,22 +31,42 @@ namespace sj1948FinalProject{
         }
         private void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.name=="cooker"){
+            if(collision.gameObject.name == "cooker"){
                 Destroy(transform.gameObject);
-                GameObject soup = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-                soup.transform.localScale = new Vector3(0.7f, 0.07f, 0.7f);
-                soup.transform.parent = collision.transform;
-                soup.name = "soup";
-                soup.GetComponent<Renderer>().material.color = new Color(0, 0, 1, 1);
-                soup.transform.localPosition = Vector3.zero;
+                soup = collision.transform.Find("soup");
+                if (soup){
+                    Vector3 soupScale = soup.localScale;
+                    soupScale.y += 0.05f;
+                    soup.localScale = soupScale;
+                    Debug.Log("soup now rise!");
+                    if (soup.localScale.y >= 0.15f)
+                    {
+                        Pot pot = collision.gameObject.GetComponent<Pot>();
+                        pot.MakeANewDish(soup);
+                        Destroy(soup.gameObject);
+                    }
+                } else {
+                    soup = GameObject.CreatePrimitive(PrimitiveType.Cylinder).transform;
+                    soup.parent = collision.transform;
+                    soup.localScale = new Vector3(0.9f, 0.05f, 0.9f);
+                    soup.name = "soup";
+                    soup.GetComponent<Renderer>().material.color = new Color(0, 0, 1, 1);
+                    soup.localPosition = Vector3.zero;
+                    Debug.Log(soup);
+                }
+
             }
         }
+
+
+
         /*
-         * PickupOrDrop
-         * Handle the event when the user clicks the button while 
-         * gaze is on this object.  Toggle grabbed state.
-         */
-        public void PickupOrDrop()
+        * PickupOrDrop
+        * Handle the event when the user clicks the button while 
+        * gaze is on this object.  Toggle grabbed state.
+        */
+        [Command]
+        public void CmdPickupOrDrop()
         {
             if (grabbed)
             {  // now drop it
@@ -66,5 +84,6 @@ namespace sj1948FinalProject{
 
             }
         }
+
     }
 }
