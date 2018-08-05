@@ -14,7 +14,7 @@ public class TeleportPad : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name=="banana" && disableTimer<=0){
+        if( disableTimer<=0 && other.gameObject.name!="table1"){
             
             foreach(TeleportPad tp in FindObjectsOfType<TeleportPad>()){
                 
