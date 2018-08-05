@@ -31,7 +31,7 @@ namespace sj1948FinalProject{
         }
         private void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.name == "cooker"){
+            if(collision.gameObject.name == "cooker" && transform.gameObject.name != "plate"){
                 Destroy(transform.gameObject);
                 soup = collision.transform.Find("soup");
                 if (soup){
