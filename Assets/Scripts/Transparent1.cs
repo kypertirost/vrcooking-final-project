@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Transparent : MonoBehaviour {
+public class Transparent1 : MonoBehaviour {
 
     public GameObject Popup;
     public float alphaLevel = 1f;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-    public class Player_Controller : NetworkBehaviour
+    public class Player_Controller1 : NetworkBehaviour
     {
 
          Transform cameraTransform;

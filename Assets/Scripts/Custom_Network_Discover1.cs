@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 namespace sj1948FinalProject
 {
-    public class Custom_Network_Discovery : NetworkDiscovery
+    public class Custom_Network_Discovery1 : NetworkDiscovery
     {
         private bool _receivedBradcast = false;
 

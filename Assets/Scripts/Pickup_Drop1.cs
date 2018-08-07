@@ -7,7 +7,7 @@ namespace sj1948FinalProject{
      * PickupMe component allows user to select this object and 
      * move it with their gaze
      ******/
-    public class Pickup_Drop : MonoBehaviour
+    public class Pickup_Drop1 : MonoBehaviour
     {
         public bool grabbed = false;  // have i been picked up, or not?
         Rigidbody myRb;
