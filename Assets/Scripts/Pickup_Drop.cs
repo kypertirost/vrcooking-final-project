@@ -7,10 +7,13 @@ namespace sj1948FinalProject{
      ******/
     public class Pickup_Drop : NetworkBehaviour
     {
-        [SyncVar]public bool grabbed = false;  // have i been picked up, or not?
+        [SyncVar]
+        public bool grabbed = false;  // have i been picked up, or not?
         Rigidbody myRb;
         float Magnitude;
         private Transform soup;
+
+
         // Use this for initialization
         void Start()
         {

@@ -4,27 +4,17 @@ using UnityEngine.Networking;
 public class Player_Controller : NetworkBehaviour
 {
 
-    private Transform cameraTransform;
-    private Transform cameraContainerTransform;
+
+    public GameObject cameraContainer;
     public Vector3 direction;
 
 
 
     public override void OnStartLocalPlayer()
     {
-
-        GameObject empty = new GameObject();
-        empty.name = "Camera";
-        cameraTransform = Camera.main.transform;
-        //GetComponent<Renderer>().material.color = Color.blue;
-        cameraContainerTransform = empty.transform;
-        cameraTransform.parent = cameraContainerTransform;
-
-        //visorTransform = transform.Find("Visor");
-        //cameraContainerTransform.position = visorTransform.position;
-        //Debug.Log("start local player: visor position = " + visorTransform.position + " camera posn = " + cameraContainerTransform.position);
+        cameraContainer = Camera.main.transform.parent.gameObject;
+     
     }
-
     void Update()
     {
         if (!isLocalPlayer)
@@ -32,11 +22,8 @@ public class Player_Controller : NetworkBehaviour
             return;
         }
 
-        transform.rotation = cameraTransform.rotation;
-        cameraContainerTransform.position = transform.position;
-        Vector3 heightRevised = cameraContainerTransform.position;
-        heightRevised.y = -29.07f;
-        cameraContainerTransform.position = heightRevised;
+        cameraContainer.transform.position = transform.GetChild(0).transform.position;
+
     }
 
 }

@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Transparent : MonoBehaviour {
+public class Transparent : NetworkBehaviour {
 
     public GameObject Popup;
+    [SyncVar]
     public float alphaLevel = 1f;
     private bool continuing=true;
+
 	// Use this for initialization
 	void Start () {
 		
