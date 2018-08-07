@@ -5736,7 +5736,7 @@ GameObject:
   - component: {fileID: 416156951}
   - component: {fileID: 416156950}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Left_eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5805,7 +5805,8 @@ Transform:
   m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0.131, y: 0.24700002, z: -0.28}
   m_LocalScale: {x: 0.06666666, y: 0.06666666, z: 0.06666666}
-  m_Children: []
+  m_Children:
+  - {fileID: 1739137804}
   m_Father: {fileID: 1838860434}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6609,6 +6610,10 @@ Prefab:
     - target: {fileID: 1213704150242978, guid: fd2caf77236170c4bb97ef5c4be54e91, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213704150242978, guid: fd2caf77236170c4bb97ef5c4be54e91, type: 2}
+      propertyPath: m_Name
+      value: Frank_JR
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd2caf77236170c4bb97ef5c4be54e91, type: 2}
@@ -7621,7 +7626,7 @@ GameObject:
   - component: {fileID: 1167454399}
   - component: {fileID: 1167454398}
   m_Layer: 0
-  m_Name: Sphere (2)
+  m_Name: Right_eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7636,9 +7641,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.077, y: 0.24700001, z: -0.28}
   m_LocalScale: {x: 0.06666666, y: 0.06666666, z: 0.06666666}
-  m_Children: []
+  m_Children:
+  - {fileID: 1562140176}
   m_Father: {fileID: 1838860434}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1167454398
 SphereCollider:
@@ -8312,7 +8318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.4, y: 78.4}
+  m_AnchoredPosition: {x: -2, y: 78.4}
   m_SizeDelta: {x: 617.8, y: 96.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370062135
@@ -8553,7 +8559,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: cb2bdbfd989a6d243bad5c1a644a762e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.2820005
+      value: -6.36
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cb2bdbfd989a6d243bad5c1a644a762e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8561,7 +8567,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cb2bdbfd989a6d243bad5c1a644a762e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.961998
+      value: 17.76
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cb2bdbfd989a6d243bad5c1a644a762e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8864,7 +8870,7 @@ GameObject:
   - component: {fileID: 1562140178}
   - component: {fileID: 1562140177}
   m_Layer: 0
-  m_Name: Sphere (3)
+  m_Name: Right_eyeball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8877,11 +8883,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1562140175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07699999, y: 0.243, z: -0.30799997}
-  m_LocalScale: {x: 0.03333333, y: 0.03333333, z: 0.03333333}
+  m_LocalPosition: {x: 0, y: -0.06000012, z: -0.4199995}
+  m_LocalScale: {x: 0.4999999, y: 0.4999999, z: 0.4999999}
   m_Children: []
-  m_Father: {fileID: 1838860434}
-  m_RootOrder: 3
+  m_Father: {fileID: 1167454397}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1562140177
 SphereCollider:
@@ -13863,7 +13869,7 @@ GameObject:
   - component: {fileID: 1739137802}
   - component: {fileID: 1739137801}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Left_eyeball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13929,12 +13935,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1739137800}
-  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.131, y: 0.243, z: -0.30799997}
-  m_LocalScale: {x: 0.03333333, y: 0.03333333, z: 0.03333333}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.060000345, z: -0.4199995}
+  m_LocalScale: {x: 0.4999999, y: 0.4999999, z: 0.4999999}
   m_Children: []
-  m_Father: {fileID: 1838860434}
-  m_RootOrder: 1
+  m_Father: {fileID: 416156953}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1749847658
 Prefab:

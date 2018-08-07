@@ -24,12 +24,32 @@ namespace sj1948FinalProject{
         {
             if (grabbed)
             {
+                
                 //if the object is clicked on, it will remain in the center of the frame of the camera aka the player's perspective
                 //relativePos is the position the object should be in in relationship to the camera
                 var relativePos = Magnitude * Camera.main.transform.forward + Camera.main.transform.position - transform.position+new Vector3(0,0,0);
                 myRb.velocity = relativePos * 100;
+                myRb.freezeRotation=true;
 
             }
+        }
+        private bool rotating = true;
+        public void Update()
+        {
+            if (rotating)
+            {
+                Vector3 to = new Vector3(20, 20, 20);
+                if (Vector3.Distance(transform.eulerAngles, to) > 0.01f)
+                {
+                    transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, to, Time.deltaTime);
+                }
+                else
+                {
+                    transform.eulerAngles = to;
+                    rotating = false;
+                }
+            }
+
         }
         private void OnCollisionEnter(Collision collision)
         {

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class FoodDispenser : MonoBehaviour {
+public class FoodDispenser : NetworkBehaviour {
     public GameObject food1;
     public GameObject food2;
     public GameObject food3;

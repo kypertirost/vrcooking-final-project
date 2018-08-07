@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class TeleportPad : MonoBehaviour {
+public class TeleportPad : NetworkBehaviour {
 
     public int code;
     float disableTimer=0;
