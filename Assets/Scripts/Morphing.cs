@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class temp : MonoBehaviour {
+public class Morphing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
