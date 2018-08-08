@@ -10,7 +10,6 @@ namespace sj1948FinalProject{
         [SyncVar]
         public bool grabbed = false;  // have i been picked up, or not?
         Rigidbody myRb;
-        float Magnitude;
         private Transform soup;
 
 
@@ -20,18 +19,7 @@ namespace sj1948FinalProject{
             myRb = GetComponent<Rigidbody>();
         }
 
-        // Update is called once per frame
-        void FixedUpdate()
-        {
-            if (grabbed)
-            {
-                //if the object is clicked on, it will remain in the center of the frame of the camera aka the player's perspective
-                //relativePos is the position the object should be in in relationship to the camera
-                var relativePos = Magnitude * Camera.main.transform.forward + Camera.main.transform.position - transform.position+new Vector3(0,0,-0.2f);
-                myRb.velocity = relativePos * 100;
 
-            }
-        }
         private void OnCollisionEnter(Collision collision)
         {
             if(collision.gameObject.name == "cooker" && transform.gameObject.name != "plate"){
@@ -73,17 +61,19 @@ namespace sj1948FinalProject{
         {
             if (grabbed)
             {  // now drop it
-                //transform.parent = null;  // release the object
+                transform.parent = null;  // release the object
                 grabbed = false;
-                myRb.useGravity = true; // isKinematic = false;  //    .useGravity = true;
+                myRb.useGravity = true;   //    .useGravity = true;
+                myRb.isKinematic = false;
             }
             else
             {   // pick it up:
                 // make it move with gaze, keeping same distance from camera
                 //Magnitude is the length of the vector
-                Magnitude = Vector3.Project(transform.position - Camera.main.transform.position, Camera.main.transform.forward).magnitude;
+                transform.parent = Camera.main.transform;  // attach object to camera
                 grabbed = true;
                 myRb.useGravity = false; //.isKinematic = true; //  .useGravity = false;
+                myRb.isKinematic = true;
 
             }
         }

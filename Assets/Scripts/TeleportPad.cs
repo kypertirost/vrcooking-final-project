@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class TeleportPad : NetworkBehaviour
 {
-
+    [SyncVar]
     public int code;
     float disableTimer = 0;
+
+
     public void Update()
     {
         if (disableTimer > 0)
@@ -15,6 +15,8 @@ public class TeleportPad : NetworkBehaviour
             disableTimer -= Time.deltaTime;
         }
     }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (disableTimer <= 0 && other.gameObject.name != "table1")
@@ -33,4 +35,5 @@ public class TeleportPad : NetworkBehaviour
             }
         }
     }
+
 }

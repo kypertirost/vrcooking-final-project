@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class FoodDispenser : NetworkBehaviour
 {
     public GameObject food1;
     public GameObject food2;
-    public GameObject food3;
-    public GameObject food4;
     GameObject destroy;
 
     void OnCollisionEnter(Collision col)
@@ -17,26 +13,19 @@ public class FoodDispenser : NetworkBehaviour
         // Add the GameObject collided with to the list.
         destroy = col.gameObject;
     }
-    public void Dispense()
+    [Command]
+    public void CmdDispense()
     {
         if (destroy == null)
         {
-            int random = Random.Range(1, 5);
+            int random = Random.Range(1, 3);
             if (random == 1)
             {
-                Instantiate(food1, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
+                NetworkServer.Spawn((GameObject)Instantiate(food1, transform.position + new Vector3(0, 0.5f, 0), transform.rotation));
             }
             else if (random == 2)
             {
-                Instantiate(food2, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
-            }
-            else if (random == 3)
-            {
-                Instantiate(food3, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
-            }
-            else
-            {
-                Instantiate(food4, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
+                NetworkServer.Spawn((GameObject)Instantiate(food2, transform.position + new Vector3(0, 0.5f, 0), transform.rotation));
             }
 
         }
@@ -46,19 +35,11 @@ public class FoodDispenser : NetworkBehaviour
             int random = Random.Range(1, 4);
             if (random == 1)
             {
-                Instantiate(food1, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
+                NetworkServer.Spawn((GameObject)Instantiate(food1, transform.position + new Vector3(0, 0.5f, 0), transform.rotation));
             }
             else if (random == 2)
             {
-                Instantiate(food2, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
-            }
-            else if (random == 3)
-            {
-                Instantiate(food3, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
-            }
-            else
-            {
-                Instantiate(food4, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
+                NetworkServer.Spawn((GameObject)Instantiate(food2, transform.position + new Vector3(0, 0.5f, 0), transform.rotation));
             }
         }
 
